@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Devnation logo" src="./assets/devnation-logo.png" />
+    <img alt="Devnation logo" src="./assets/logo.png" />
     <h1 style="margin-left: 50px;">Welcome to Secure Vue App</h1>
     <h2 style="margin-left: 50px;">User: {{keycloak.tokenParsed.preferred_username}}</h2>
     <div>
