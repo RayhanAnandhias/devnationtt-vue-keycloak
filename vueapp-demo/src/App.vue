@@ -37,7 +37,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://127.0.0.1:8001/user", {
+      .get("http://localhost:5001/anonymous", {
         headers: {
           Authorization: "Bearer " + this.keycloak.token
         }
