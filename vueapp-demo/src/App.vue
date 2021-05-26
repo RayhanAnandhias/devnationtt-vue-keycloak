@@ -1,19 +1,21 @@
 <template>
   <div id="app">
     <img alt="Devnation logo" src="./assets/logo.png" />
-    <h1 style="margin-left: 50px;">Welcome to Secure Vue App</h1>
-    <h2 style="margin-left: 50px;">User: {{keycloak.tokenParsed.preferred_username}}</h2>
+    <h1 style="margin-left: 50px">Welcome to Secure Vue App</h1>
+    <h2 style="margin-left: 50px">
+      User: {{ keycloak.tokenParsed.preferred_username }}
+    </h2>
     <div>
       <button class="btn" @click="keycloak.logout()">Logout</button>
     </div>
     <div id="wrapper">
       <div class="jwt-token">
-        <h3 style="color: black;">JWT Token</h3>
-        {{keycloak.token}}
+        <h3 style="color: black">JWT Token</h3>
+        {{ keycloak.token }}
       </div>
       <div class="jwt-token-info">
-        <h3 style="color: black;">Response from Quarkus API</h3>
-        <pre style="background-color: black;">{{user.data}}</pre>
+        <h3 style="color: black">Response from Quarkus API</h3>
+        <pre style="background-color: black">{{ user.data }}</pre>
       </div>
     </div>
     <HelloWorld msg="Welcome to Demo App" />
@@ -28,7 +30,7 @@ export default {
   name: "App",
   props: ["keycloak"],
   components: {
-    HelloWorld
+    HelloWorld,
   },
   data() {
     return {
@@ -37,13 +39,13 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:5001/anonymous", {
+      .get("http://localhost:5001/get-data-user", {
         headers: {
-          Authorization: "Bearer " + this.keycloak.token
-        }
+          Authorization: "Bearer " + this.keycloak.token,
+        },
       })
-      .then(response => (this.user = response));
-  }
+      .then((response) => (this.user = response));
+  },
 };
 </script>
 
@@ -98,12 +100,12 @@ export default {
 }
 
 .btn {
-    color: #fff;
-    background-color: #0088ce;
-    border-color: #00659c;
-    padding: 6px 10px;
-    font-size: 14px;
-    line-height: 1.3333333;
-    border-radius: 1px;
+  color: #fff;
+  background-color: #0088ce;
+  border-color: #00659c;
+  padding: 6px 10px;
+  font-size: 14px;
+  line-height: 1.3333333;
+  border-radius: 1px;
 }
 </style>
